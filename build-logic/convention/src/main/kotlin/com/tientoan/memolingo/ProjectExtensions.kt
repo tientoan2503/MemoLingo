@@ -23,3 +23,12 @@ import org.gradle.kotlin.dsl.getByType
 
 val Project.libs
     get(): VersionCatalog = extensions.getByType<VersionCatalogsExtension>().named("libs")
+
+val VersionCatalog.minSdk
+    get(): Int = findVersion("android-minSdk").get().requiredVersion.toInt()
+
+val VersionCatalog.targetSdk
+    get(): Int = findVersion("android-targetSdk").get().requiredVersion.toInt()
+
+val VersionCatalog.compileSdk
+    get(): Int = findVersion("android-compileSdk").get().requiredVersion.toInt()

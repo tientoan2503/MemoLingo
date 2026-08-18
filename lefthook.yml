@@ -1,0 +1,11 @@
+pre-commit:
+  parallel: true
+  commands:
+    spotless:
+      glob: "*.{kt,kts}"
+      run: ./gradlew spotlessCheck --daemon
+      fail_text: "Run './gradlew spotlessApply' to auto-fix formatting, then re-stage your files."
+    detekt:
+      glob: "*.{kt,kts}"
+      run: ./gradlew detekt --daemon
+      fail_text: "Please resolve Detekt issues above before committing."

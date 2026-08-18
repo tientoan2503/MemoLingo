@@ -25,6 +25,7 @@ dependencies {
   compileOnly(libs.kotlin.gradlePlugin)
   compileOnly(libs.compose.gradlePlugin)
   compileOnly(libs.spotless.gradlePlugin)
+  compileOnly(libs.detekt.gradlePlugin)
 }
 
 gradlePlugin {
@@ -49,10 +50,19 @@ gradlePlugin {
       implementationClass = "AndroidTestConventionPlugin"
     }
     
-    register("jvmLibrary") {
-      id = libs.plugins.memolingo.jvm.library.get().pluginId
-      implementationClass = "JvmLibraryConventionPlugin"
+    register("kmpLibrary") {
+      id = libs.plugins.memolingo.kmp.library.get().pluginId
+      implementationClass = "KmpLibraryConventionPlugin"
+    }
+
+    register("kmpCompose") {
+      id = libs.plugins.memolingo.kmp.compose.get().pluginId
+      implementationClass = "KmpComposeConventionPlugin"
+    }
+
+    register("root") {
+      id = libs.plugins.memolingo.root.get().pluginId
+      implementationClass = "RootPlugin"
     }
   }
 }
-
